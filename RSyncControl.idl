@@ -1,0 +1,106 @@
+﻿// RSyncControl.idl: ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 生成类型库(RSyncControl.tlb)，该类型库将成为
+// RS_CertSafe.ocx。
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ 
+	//uuid(a8de96ca-374b-497d-aa5f-3c0309c8a9f0),  // _tlid
+	uuid(5FF751F0-5CAB-496C-A5E7-1F3B2CBD2F4E),
+	version(2.0),
+	control 
+]
+library RS_CertSafeLib	// RS_CertSafeLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CRSyncControlCtrl 的主调度接口
+	[ 
+		// _DRS_CertSafe
+		// uuid(db403885-f81d-41d2-80d7-40365097d60c)
+		uuid(7A58AA86-D40D-4611-9DA1-DFCEAE95315A) 
+	]
+	dispinterface _DRS_CertSafe	// _DRS_CertSafe	uuid(7A58AA86-D40D-4611-9DA1-DFCEAE95315A)
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(20)]BSTR RS_KeyGetKeySn(void);
+			[id(21)]BSTR RS_KeyGetKeySnExt(BSTR containerId);
+			[id(22)]BSTR RS_GetUserList(void);
+			[id(23)]BSTR RS_GetCertBase64String(BSTR containerId, SHORT certType);
+			[id(24)]BSTR RS_CertLogin(BSTR containerId, BSTR password);
+			[id(25)]BSTR RS_GetPinRetryCount(BSTR containerId);
+			[id(26)]BSTR RS_ChangePassWd(BSTR containerId, BSTR oldCdoe, BSTR newCode);
+			[id(27)]BSTR RS_KeySignByP1(BSTR msg, BSTR containerId);
+			[id(28)]BSTR RS_VerifySignByP1(BSTR certBase64, BSTR msg, BSTR signdMsg);
+			[id(29)]BSTR RS_KeyEncryptData(BSTR rsKey, BSTR certBase64);
+			[id(30)]BSTR RS_KeyDecryptData(BSTR encRsKey, BSTR containerId);
+			[id(31)]BSTR RS_GetCertInfo(BSTR certBase64, BSTR type);
+			[id(32)]BSTR RS_KeySignByP7(BSTR msg, BSTR flag, BSTR containerId);
+			[id(33)]BSTR RS_VerifySignByP7(BSTR msg, BSTR signdMsg, BSTR flag);
+			[id(34)]BSTR RS_CloudLoginAuth(BSTR transid);
+			[id(35)]BSTR RS_CloudSealAuth(BSTR transid);
+			[id(36)]BSTR RS_CloudGetAuth(BSTR transid);
+			[id(37)]BSTR RS_CloudGetSealList(BSTR token);
+			[id(38)]BSTR RS_CloudSignByP7(BSTR msg, BSTR keySn, BSTR transid, BSTR token);
+			[id(39)]BSTR RS_CloudGetSignResult(BSTR transid);
+			[id(40)]BSTR RS_CloudLogoutAuth(BSTR token);
+			[id(41)]BSTR RS_CloudEncryptAuth(BSTR transid);
+			[id(42)]BSTR RS_CloudEncryptData(BSTR reachKey, BSTR transid, BSTR token);
+			[id(43)]BSTR RS_CloudEncryptFile(BSTR souceFilePath, BSTR encFilePath, BSTR transid, BSTR token);
+			[id(44)]BSTR RS_CloudDevryptAuth(BSTR transid);
+			[id(45)]BSTR RS_CloudDevryptData(BSTR encReachKey, BSTR url, BSTR transid, BSTR token);
+			[id(46)]BSTR RS_CloudDevryptFile(BSTR encFilePath, BSTR dncFilePath, BSTR url, BSTR transid, BSTR token);
+			[id(47)]BSTR RS_CloudReceiveDevryptResult(BSTR transid, BSTR token, BSTR devResult);
+			[id(48)]BSTR RS_CloudGetCompanyCert(BSTR transid, BSTR token);
+			[id(49)]BSTR RS_CloudGetCertAuth(BSTR transid);
+			[id(50)]BSTR RS_CloudGetCertBase64(BSTR transid, BSTR token);
+			[id(51)]BSTR RS_CloudLogout(BSTR userId);
+			[id(52)]BSTR RS_KeyStatus(BSTR containerId);
+			[id(53)]BSTR RS_ConfigParameters(BSTR cmd, BSTR val);
+			[id(54)]BSTR RS_GetParameters(BSTR cmd);
+			[id(55)]BSTR RS_GreateQRCode(BSTR qrcode, BSTR path);
+			[id(56)]BSTR RS_GetTransid(BSTR joinCode);
+			[id(57)]BSTR RS_EncryptFile(BSTR souceFilePath, BSTR encFilePath);
+			[id(58)]BSTR RS_DevryptFile(BSTR symKey, BSTR encFilePath, BSTR dncDirectoryPath);
+			[id(59)]BSTR RS_VerifyIdentity(BSTR certBase64, BSTR authNo);
+			[id(60)]BSTR RS_KeyEncryptFile(BSTR souceFilePath, BSTR encFilePath, BSTR certBase64);
+			[id(61)]BSTR RS_KeyDecryptFile(BSTR encFilePath, BSTR dncFilePath, BSTR containerId);
+			[id(62)]BSTR RS_EncryptDataBase64(BSTR symKey, BSTR certBase64);
+			[id(63)]BSTR RS_EncryptFileBase64(BSTR souceFilePath, BSTR encFilePath, BSTR certBase64);
+			[id(64)]BSTR RS_ConfigParamsByBussSys(BSTR cmd, BSTR val);
+			[id(65)]BSTR RS_EncryptData(BSTR dataStr);
+			[id(66)]BSTR RS_DevryptData(BSTR symKey, BSTR encDataStr);
+	};
+
+	//  CRSyncControlCtrl 的事件调度接口
+	
+	[ 
+		// _DRS_CertSafeEvents
+		// uuid(b1c93fb3-0485-4837-9aaf-af8f96a2c0d2)
+		uuid(EECD3FF1-DED8-44B3-877C-99D056D5449D)
+	]
+	dispinterface _DRS_CertSafeEvents	// _DRS_CertSafeEvents	uuid(EECD3FF1-DED8-44B3-877C-99D056D5449D)
+	{
+		properties:
+			//  事件接口没有任何属性
+		methods:
+	};
+	//  CRSyncControlCtrl 的类信息
+	[
+		// RSyncControl
+		// uuid(a0b23721-9350-4b4d-b581-65add1a77a5e)
+		uuid(F84C8F57-5A05-4D8C-826D-29589C7A121C)
+	]
+	coclass RS_CertSafe // RS_CertSafe	uuid(F84C8F57-5A05-4D8C-826D-29589C7A121C)
+	{
+		[default] dispinterface _DRS_CertSafe;
+		[default, source] dispinterface _DRS_CertSafeEvents;
+	};
+
+};
