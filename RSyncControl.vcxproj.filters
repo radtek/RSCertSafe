@@ -77,7 +77,7 @@
     <ClInclude Include="RSyncMsgTip.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="RSyncChangPassWd.h">
+    <ClInclude Include="CDlgInputCertPW.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,6 +101,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="RSyncControl.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="certicon_bmp.bmp">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

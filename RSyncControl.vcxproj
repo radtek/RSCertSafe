@@ -243,8 +243,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cathelp.h" />
+    <ClInclude Include="CDlgInputCertPW.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="RSyncChangPassWd.h" />
     <ClInclude Include="RSyncMsgTip.h" />
     <ClInclude Include="RSyncControl.h" />
     <ClInclude Include="RSyncControlCtrl.h" />
@@ -264,6 +264,7 @@
     <Midl Include="RSyncControl.idl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="certicon_bmp.bmp" />
     <Image Include="RSyncControl.ico" />
     <Image Include="RSyncControlCtrl.bmp" />
   </ItemGroup>
