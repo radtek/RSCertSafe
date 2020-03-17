@@ -243,7 +243,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cathelp.h" />
-    <ClInclude Include="CDlgInputCertPW.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RSyncMsgTip.h" />
     <ClInclude Include="RSyncControl.h" />

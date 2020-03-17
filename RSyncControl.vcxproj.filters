@@ -77,9 +77,6 @@
     <ClInclude Include="RSyncMsgTip.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CDlgInputCertPW.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="RSyncControl.def">
