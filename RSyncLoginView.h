@@ -36,4 +36,6 @@ private:
 	CString m_nameStr;
 	// 密码
 	CString m_passwordStr;
+public:
+	afx_msg void OnPaint();
 };
