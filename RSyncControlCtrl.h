@@ -64,6 +64,7 @@ protected:
 	BSTR RS_KeyDecryptFile(BSTR encFilePath, BSTR dncFilePath, BSTR containerId);
 	BSTR RS_EncryptDataBase64(BSTR symKey, BSTR certBase64);
 	BSTR RS_EncryptFileBase64(BSTR souceFilePath, BSTR encFilePath, BSTR certBase64);
+	BSTR RS_KeyGetDeviceInfo(BSTR containerId, BSTR type);
 	/// Cloud API
 	BSTR RS_CloudLoginAuth(BSTR transid);
 	BSTR RS_CloudSealAuth(BSTR transid);
@@ -155,7 +156,8 @@ private:
 		dispid_63,
 		dispid_64,
 		dispid_65,
-		dispid_66
+		dispid_66,
+		dispid_67
 	};
 public:
 	virtual BOOL IsInvokeAllowed(DISPID /*dispid*/);
