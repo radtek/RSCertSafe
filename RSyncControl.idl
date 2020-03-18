@@ -76,6 +76,7 @@ library RS_CertSafeLib	// RS_CertSafeLib
 			[id(64)]BSTR RS_ConfigParamsByBussSys(BSTR cmd, BSTR val);
 			[id(65)]BSTR RS_EncryptData(BSTR dataStr);
 			[id(66)]BSTR RS_DevryptData(BSTR symKey, BSTR encDataStr);
+			[id(67)]BSTR RS_KeyGetDeviceInfo(BSTR containerId, BSTR type);
 	};
 
 	//  CRSyncControlCtrl 的事件调度接口

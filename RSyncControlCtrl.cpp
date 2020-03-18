@@ -103,6 +103,7 @@ BEGIN_DISPATCH_MAP(CRSyncControlCtrl, COleControl)
 	DISP_FUNCTION_ID(CRSyncControlCtrl, "RS_ConfigParamsByBussSys",				dispid_64,			RS_ConfigParamsByBussSys,			VT_BSTR, VTS_BSTR VTS_BSTR)
 	DISP_FUNCTION_ID(CRSyncControlCtrl, "RS_EncryptData",						dispid_65,			RS_EncryptData,						VT_BSTR, VTS_BSTR)
 	DISP_FUNCTION_ID(CRSyncControlCtrl, "RS_DevryptData",						dispid_66,			RS_DevryptData,						VT_BSTR, VTS_BSTR VTS_BSTR)
+	DISP_FUNCTION_ID(CRSyncControlCtrl, "RS_KeyGetDeviceInfo",					dispid_67,			RS_KeyGetDeviceInfo,				VT_BSTR, VTS_BSTR VTS_BSTR)
 END_DISPATCH_MAP()
 
 // 事件映射
@@ -487,6 +488,21 @@ BSTR CRSyncControlCtrl::RS_EncryptFileBase64(BSTR souceFilePath, BSTR encFilePat
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_EncryptFileBase64", body.str());
 
+	return _bstr_t(result.data());
+}
+
+BSTR CRSyncControlCtrl::RS_KeyGetDeviceInfo(BSTR containerId, BSTR type)
+{
+	std::string ID = utility_bstr_check(_com_util::ConvertBSTRToString(containerId));
+	std::string TYPE = utility_bstr_check(_com_util::ConvertBSTRToString(type));
+
+	HTMLForm params;
+	params.set("containerId", Utility::GBKEncodingUTF8(ID));
+	params.set("type", Utility::GBKEncodingUTF8(TYPE));
+
+	std::ostringstream body;
+	params.write(body);
+	std::string result = Utility::SuperRequestGBK("/RS_KeyGetDeviceInfo", body.str());
 	return _bstr_t(result.data());
 }
 
