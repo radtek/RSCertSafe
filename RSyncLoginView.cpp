@@ -27,10 +27,9 @@ RSyncLoginView::~RSyncLoginView()
 BOOL RSyncLoginView::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	CRect r;
-	GetWindowRect(r);
-
-	MoveWindow(CRect(r.left, r.top, r.left + 350, r.top + 200));
+	//CRect r;
+	//GetWindowRect(r);
+	//MoveWindow(CRect(r.left, r.top, r.left + 350, r.top + 200));
 	return 0;
 }
 
