@@ -1014,7 +1014,7 @@ BSTR CRSyncControlCtrl::RS_CloudReceiveDevryptResult(BSTR transid, BSTR token, B
 	HTMLForm params;
 	params.set("transid", TRANSID);
 	params.set("token", TOKEN);
-	params.set("result", RESULT);
+	params.set("devResult", RESULT);
 	std::ostringstream body;
 	params.write(body);
 	std::string respond = Utility::SuperRequestGBK("/RS_CloudReceiveDevryptResult", body.str());
