@@ -36,7 +36,7 @@ using namespace Reach::ActiveX;
 
 
 Poco::Net::HTTPClientSession Utility::_session("127.0.0.1", 9900);
-
+const std::string Utility::errorMsg = "{ \"code\":\"9083\", \"msg\" : \"result is empty!\" }";
 Utility::Utility()
 {
 	_session.reset();
@@ -149,8 +149,8 @@ std::string Reach::ActiveX::Utility::UTF8EncodingGBK(const std::string & inEncod
 
 std::string Reach::ActiveX::Utility::GBKJSONStreamUTF8(const std::string & inString)
 {
-	poco_assert(!inString.empty());
-	if (inString.empty()) return "";
+	assert(!inString.empty());
+	if (inString.empty()) return errorMsg;
 
 	Parser sp;
 	Var R = sp.parse(inString);
@@ -161,8 +161,8 @@ std::string Reach::ActiveX::Utility::GBKJSONStreamUTF8(const std::string & inStr
 
 std::string Reach::ActiveX::Utility::UTF8JSONStreamGBK(const std::string & inString)
 {
-	poco_assert(!inString.empty());
-	if (inString.empty()) return "";
+	assert(!inString.empty());
+	if (inString.empty()) return errorMsg;
 
 	Parser sp;
 	Var R = sp.parse(inString);
@@ -211,4 +211,20 @@ std::string Utility::formatUid(const std::string& entries)
 	}
 
 	return uid;
+}
+
+void Utility::message(const std::string& message)
+{
+	std::ostringstream ostr;
+	std::string stringToken(100, '#');
+
+	ostr << std::endl
+		<< stringToken
+		<< std::endl
+		<< message
+		<< std::endl
+		<< stringToken
+		<< std::endl << std::endl;
+
+	OutputDebugStringA(ostr.str().c_str());
 }

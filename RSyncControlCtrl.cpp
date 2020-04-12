@@ -350,14 +350,14 @@ BSTR CRSyncControlCtrl::RS_CreateQRCode(BSTR qrcode, BSTR path)
 BSTR CRSyncControlCtrl::RS_GetTransid(BSTR joinCode)
 {
 	std::string joinCodestr = utility_bstr_check(_com_util::ConvertBSTRToString(joinCode));
-
+	utility_message_f2("Begin %s joinCode:%s", std::string(__FUNCTION__), joinCodestr);
 	HTMLForm params;
 	params.set("joinCode", joinCodestr);
 
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_GetTransid", body.str());
-
+	utility_message_f2("Begin %s transid:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 
@@ -821,26 +821,26 @@ BSTR CRSyncControlCtrl::RS_CloudLoginAuth(BSTR transid)
 BSTR CRSyncControlCtrl::RS_CloudSealAuth(BSTR transid)
 {
 	std::string id = utility_bstr_check(_com_util::ConvertBSTRToString(transid));
-
+	utility_message_f2("Begin %s transid:%s", std::string(__FUNCTION__), id);
 	HTMLForm params;
 	params.set("transid", id);
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_CloudSealAuth", body.str());
-
+	utility_message_f2("End %s transid:%s", std::string(__FUNCTION__), id);
 	return _bstr_t(result.data());
 }
 
 BSTR CRSyncControlCtrl::RS_CloudGetAuth(BSTR transid)
 {
 	std::string TRANSID = utility_bstr_check(_com_util::ConvertBSTRToString(transid));
-
+	utility_message_f2("Begin %s transid:%s", std::string(__FUNCTION__), TRANSID);
 	HTMLForm params;
 	params.set("transid", TRANSID);
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_CloudGetAuth", body.str());
-
+	utility_message_f2("End %s transid:%s", std::string(__FUNCTION__), TRANSID);
 	return _bstr_t(result.data());
 }
 
@@ -1040,13 +1040,13 @@ BSTR CRSyncControlCtrl::RS_CloudGetCompanyCert(BSTR transid, BSTR token)
 BSTR CRSyncControlCtrl::RS_CloudGetCertAuth(BSTR transid)
 {
 	std::string TRANSID = utility_bstr_check(_com_util::ConvertBSTRToString(transid));
-
+	utility_message_f2("Begin %s transid:%s", std::string(__FUNCTION__), TRANSID);
 	HTMLForm params;
 	params.set("transid", TRANSID);
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_CloudGetCertAuth", body.str());
-
+	utility_message_f2("End %s transid:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 
