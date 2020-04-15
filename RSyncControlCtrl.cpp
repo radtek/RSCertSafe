@@ -357,7 +357,7 @@ BSTR CRSyncControlCtrl::RS_GetTransid(BSTR joinCode)
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_GetTransid", body.str());
-	utility_message_f2("Begin %s transid:%s", std::string(__FUNCTION__), result);
+	utility_message_f2("End %s transid:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 
@@ -416,7 +416,7 @@ BSTR CRSyncControlCtrl::RS_KeyEncryptFile(BSTR souceFilePath, BSTR encFilePath, 
 	std::string souceFile = utility_bstr_check(_com_util::ConvertBSTRToString(souceFilePath));
 	std::string encFile = utility_bstr_check(_com_util::ConvertBSTRToString(encFilePath));
 	std::string cert = utility_bstr_check(_com_util::ConvertBSTRToString(certBase64));
-
+	utility_message_f4("Begin %s souceFilePath:%s \n encFile:%s\n cert:%s\n", std::string(__FUNCTION__), souceFile, encFile, cert);
 	HTMLForm params;
 	params.set("souceFilePath", Utility::GBKEncodingUTF8(souceFile));
 	params.set("encFilePath", Utility::GBKEncodingUTF8(encFile));
@@ -425,7 +425,7 @@ BSTR CRSyncControlCtrl::RS_KeyEncryptFile(BSTR souceFilePath, BSTR encFilePath, 
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_KeyEncryptFile", body.str());
-
+	utility_message_f2("End %s result:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 //需要登录状态下才能调用接口
@@ -434,7 +434,7 @@ BSTR CRSyncControlCtrl::RS_KeyDecryptFile(BSTR encFilePath, BSTR dncFilePath, BS
 	std::string encFile = utility_bstr_check(_com_util::ConvertBSTRToString(encFilePath));
 	std::string dncFile = utility_bstr_check(_com_util::ConvertBSTRToString(dncFilePath));
 	std::string id = utility_bstr_check(_com_util::ConvertBSTRToString(containerId));
-
+	utility_message_f4("Begin %s souceFilePath:%s \n encFile:%s\n cert:%s\n", std::string(__FUNCTION__), encFile, dncFile, id);
 	if (!IsLogined(id))
 	{
 		RSyncLoginView loginView(CString(id.c_str()), CString(""));
@@ -453,7 +453,7 @@ BSTR CRSyncControlCtrl::RS_KeyDecryptFile(BSTR encFilePath, BSTR dncFilePath, BS
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_KeyDecryptFile", body.str());
-  
+	utility_message_f2("End %s result:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 
