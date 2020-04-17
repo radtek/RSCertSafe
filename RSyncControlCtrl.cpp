@@ -847,12 +847,13 @@ BSTR CRSyncControlCtrl::RS_CloudGetAuth(BSTR transid)
 BSTR CRSyncControlCtrl::RS_CloudGetSealList(BSTR token)
 {
 	std::string TOKEN = utility_bstr_check(_com_util::ConvertBSTRToString(token));
-
+	utility_message_f2("Begin %s token:%s", std::string(__FUNCTION__), TOKEN);
 	HTMLForm params;
 	params.set("token", TOKEN);
 	std::ostringstream body;
 	params.write(body);
 	std::string result = Utility::SuperRequestGBK("/RS_CloudGetSealList", body.str());
+	utility_message_f2("End %s result:%s", std::string(__FUNCTION__), result);
 	return _bstr_t(result.data());
 }
 
